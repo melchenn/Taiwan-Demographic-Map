@@ -11,63 +11,79 @@ const map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 map.on('load', () => {
-    // Add a source for the city polygons.
+    // Add source for city polygons
     map.addSource('taiwan-cities', {
         'type': 'geojson',
         'data': 'data/taiwan-shape.geojson'
     });
 
-    // Add a layer showing the city polygons.
+    // Add a layer showing the city polygons
     map.addLayer({
         'id': 'city-layer',
         'type': 'fill',
         'source': 'taiwan-cities',
         'paint': {
-            'fill-color': '#cea1ff',
+            'fill-color': '#cea1ff', //pink
             'fill-opacity': [
                 'case',
                 ['boolean', ['feature-state', 'click'], false],
-                1,
+                0.6,
                 0.2
             ]
         }
     });
 
      // add a line layer showing city boundaries
-     map.addLayer({
+    map.addLayer({
         'id': 'city-outline',
         'type': 'line',
-        'source': 'taiwan-cities', //this must match the name of the source
+        'source': 'taiwan-cities',
         'layout': {},
         'paint': {
-            'line-color': 'grey',
-            'line-width': 0.5,
+            'line-color': [
+                'case',
+                ['boolean', ['feature-state', 'click'], false],
+                "purple",
+                "grey"
+            ],
+            'line-width': [
+                'case',
+                ['boolean', ['feature-state', 'click'], false],
+                5,
+                0.6
+            ],
+            'line-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'click'], false],
+                1,
+                1
+            ]
         }
     });
 
-    // Popup appears when a click event occurs on a feature in the city-layer, 
-    // open a popup at the location of the click, with description
-    // HTML from the click event's properties.
+    // Popup appears when a click on a feature in the city-layer
     map.on('click', 'city-layer', (e) => {
         if (e.features.length > 0) {
             const feature = e.features[0];
             const cityName = feature.properties.COUNTYENG; // City name
             const population = feature.properties.POPULATION; // Population
-            const fmRatio = feature.properties.Fmratio || 'Not available'; // Female-to-male ratio
-            const age0_18 = feature.properties.age0_18 || 'Data not available'; //Age Distribution
-            const age19_65 = feature.properties.age19_65 || 'Data not available';
-            const ageOver65 = feature.properties.over65 || 'Data not available';
+            const fmRatio = feature.properties.Fmratio  // Female-to-male ratio
+            const age0_18 = feature.properties.age0_18 // Age 0-18
+            const age19_65 = feature.properties.age19_65  // Age 19-65
+            const ageOver65 = feature.properties.over65  // Over 65
     
+            // Creating an HTML content string for the popup
+            // not yet solve the error yet; it says the numerical value is not defined
             // Creating an HTML content string for the popup
             const popupContent = `
                 <h3>${cityName}</h3>
-                <p><strong>Population:</strong> ${population}</p>
+                <p><strong>Population:</strong> ${numeral(population).format('0.0a')}</p>
                 <p><strong>Female to Male Ratio:</strong> ${fmRatio}</p>
                 <p><strong>Age Distribution:</strong></p>
                 <ul>
-                    <li>Ages 0-18: ${age0_18}</li>
-                    <li>Ages 19-65: ${age19_65}</li>
-                    <li>Over 65: ${ageOver65}</li>
+                    <li>Ages 0-18: ${numeral(age0_18).format('0.0a')}</li>
+                    <li>Ages 19-65: ${numeral(age19_65).format('0.0a')}</li>
+                    <li>Over 65: ${numeral(ageOver65).format('0.0a')}</li>
                 </ul>
             `;
     
