@@ -11,36 +11,100 @@ body {
     width: 100%;
 }
 
-/* styling for popup */
-.mapboxgl-popup {
-    max-width: 400px;
-    font:
-        12px/20px 'Helvetica Neue',
-        Arial,
-        Helvetica,
-        sans-serif;
-}
-
 /* styling for sidebar */
 #sidebar {
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 1;
-    width: 300px;
+    width: 390px;
     background: #ececec;
     padding: 15px;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 2px 2px rgb(116 116 116)
-    -moz-box-shadow: 0px 0px 2px 2px rgb(116 116 116)
-    box-shadow: 0px 0px 2px 2px rgb(116 116 116)
+    -webkit-box-shadow: 0px 0px 2px 2px rgb(116 116 116) -moz-box-shadow: 0px 0px 2px 2px rgb(116 116 116) box-shadow: 0px 0px 2px 2px rgb(116 116 116)
 }
 
 #sidebar h1 {
-    font-size: 24px
+    font-size: 22px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 650;
+    font-style: normal;
+    color: #3b3a37;
 }
 
 #sidebar p {
+    font-size: 100px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 2300;
+    font-style: normal;
+}
+
+
+
+#sidebar p {
     font-size: 14px;
+}
+
+/* styling for sidebar2*/
+#sidebar2 {
+    position: absolute;
+    top: 250px;
+    height: 260px;
+    left: 20px;
+    z-index: 1;
+    width: 380px;
+    background: #fff7fc;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 2px 2px rgb(116 116 116) -moz-box-shadow: 0px 0px 2px 2px rgb(116 116 116) box-shadow: 0px 0px 2px 2px rgb(116 116 116)
+}
+
+#sidebar2 h1 {
+    font-size: 25px;
+    text-align: center;
+    font-family: "Mukta", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    /* Remove the default underline */
+    border-bottom: 2px solid purple;
+    /* Add a colored underline */
+}
+
+#sidebar2 p {
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#sidebar2 p2 {
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#sidebar2 .actiontext {
+    font-size: 20px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 450;
+    font-style: normal;
+}
+
+
+#sidebar2 table {
+    border-collapse: collapse;
+}
+
+#sidebar2 table th,
+td {
+    padding: 0;
+    margin: 0;
+    height: 10px !important;
+    line-height: 10px;
 }
 

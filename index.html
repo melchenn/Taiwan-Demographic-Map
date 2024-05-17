@@ -7,6 +7,16 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poetsen+One&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -16,17 +26,29 @@
         </div>
         <div>
             <p><strong>Welcome to the Taiwan Demographic Map!</strong></p>
-            <p>Explore demographic details of cities across Taiwan by clicking on any city on the map to see population data, gender ratios, and age distributions. </p>
+            <p>Explore demographic details of cities across Taiwan by clicking on any city on the map to see population
+                data, gender ratios, and age distributions. </p>
         </div>
-       
         <a href="https://github.com/melchenn/Taiwan-Demographic-Map">Source Code</a>
     </div>
-    <div id="map-container"></div>
-    
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
-    <script src="js/scripts.js"></script>
-    
+
+    <!second sidebar to show demographic stats-- -->
+        <div id="sidebar2">
+            <div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p class="actiontext">Click on the cities to see <br> their demographic stats here!</p>
+            </div>
+        </div>
+
+        <div id="map-container"></div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+        <script src="js/scripts.js"></script>
+
 </body>
 
 </html>

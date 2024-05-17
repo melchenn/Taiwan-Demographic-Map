@@ -3,8 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWVsY2hlbm4iLCJhIjoiY2x1b3dzMm44MWc4NDJqcG9zO
 // Create a new map, bounded by Taiwan.
 const map = new mapboxgl.Map({
     container: 'map-container',
-    style: 'mapbox://styles/mapbox/streets-v12',
-    bounds: [[120.30517, 25.36416], [120.73489, 21.68234]]
+    style: 'mapbox://styles/melchenn/clw9gakwk00jl01nx1zs90s1n',
+    bounds: [[116.31100, 21.77632], [123.39746, 25.39158]]
 });
 
 // zoom and compass features
@@ -31,7 +31,7 @@ map.on('load', () => {
                 0.2
             ]
         }
-    });
+    }, 'building-entrance');
 
      // add a line layer showing city boundaries
     map.addLayer({
@@ -59,41 +59,45 @@ map.on('load', () => {
                 1
             ]
         }
-    });
+    }, 'building-entrance');
 
-    // Popup appears when a click on a feature in the city-layer
+
+    // Stats appears on sidebar when clicking on a feature in the city-layer
     map.on('click', 'city-layer', (e) => {
         if (e.features.length > 0) {
             const feature = e.features[0];
             const cityName = feature.properties.COUNTYENG; // City name
             const population = feature.properties.POPULATION; // Population
-            const fmRatio = feature.properties.Fmratio  // Female-to-male ratio
-            const age0_18 = feature.properties.age0_18 // Age 0-18
-            const age19_65 = feature.properties.age19_65  // Age 19-65
-            const ageOver65 = feature.properties.over65  // Over 65
-    
-            // Creating an HTML content string for the popup
-            // not yet solve the error yet; it says the numerical value is not defined
-            // Creating an HTML content string for the popup
-            const popupContent = `
-                <h3>${cityName}</h3>
-                <p><strong>Population:</strong> ${numeral(population).format('0.0a')}</p>
-                <p><strong>Female to Male Ratio:</strong> ${fmRatio}</p>
-                <p><strong>Age Distribution:</strong></p>
-                <ul>
-                    <li>Ages 0-18: ${numeral(age0_18).format('0.0a')}</li>
-                    <li>Ages 19-65: ${numeral(age19_65).format('0.0a')}</li>
-                    <li>Over 65: ${numeral(ageOver65).format('0.0a')}</li>
-                </ul>
+            const fmRatio = feature.properties.Fmratio;  // Female-to-male ratio
+            const age0_18 = feature.properties.age0_18; // Age 0-18
+            const age19_65 = feature.properties.age19_65;  // Age 19-65
+            const ageOver65 = feature.properties.over65;  // Over 65
+
+            // Creating an HTML content string on the second sidebar
+            const sidebar2 = document.getElementById('sidebar2');
+            sidebar2.innerHTML = `
+            <h1>${cityName}</h1>
+            <table style="width:100%">
+            <tr style="height:10px">
+                <td><p>Population</p></td>
+                <td><p2><strong>${numeral(population).format('0.0a')}</strong></p2></td>
+            </tr>
+            <tr>
+                <td><p>Female to Male Ratio</p></td>
+                <td><p2><strong>${fmRatio}</strong> </p2></td>
+            </tr>
+            <tr>
+                <td><p>Age Distribution</p></td>
+                <td style:;ome-spaco>
+                <p>0-18 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p2><strong>${numeral(age0_18).format('0.0a')}</strong></p2><p>
+                <p>19-65 &nbsp; &nbsp;&nbsp;&nbsp; <p2><strong>${numeral(age19_65).format('0.0a')}</strong></p2><p>
+                <p>Over 65  &nbsp; <p2><strong>${numeral(ageOver65).format('0.0a')}</strong></p2><p>
+            </ul></td>
+            </tr>
+        </table>
             `;
-    
-            new mapboxgl.Popup()
-                .setLngLat(e.lngLat)
-                .setHTML(popupContent)
-                .addTo(map);
         }
     });
-
 
     var PolygonId = null
     // feature city for the feature under the mouse
@@ -111,7 +115,7 @@ map.on('load', () => {
             map.setFeatureState(
                 { source: 'taiwan-cities', id:PolygonId },
                 {click: true}
-            )
+            );
         }
     })
 
