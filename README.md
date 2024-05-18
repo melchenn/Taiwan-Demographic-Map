@@ -1,6 +1,6 @@
 <h1>Taiwan Demographic Map</h1>
 
-<p><strong>Interactive Map:</strong> Users can click on any city to view a popup with detailed demographic statistics. </p>
+<p><strong>Interactive Map:</strong> Users can click on any city to view demographic statistics. </p>
 <p> This interactive web map provides demographic information about Taiwan's cities, including population counts, gender ratios, and age distribution. </p>
 
 
